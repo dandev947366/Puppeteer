@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 
 
 (async () => {
-    const link = "https://clickspeedtest.com/";
+    const link = "https://cpstest.org/";
     const browser = await puppeteer.launch({
         headless: false,
     })
@@ -12,10 +12,10 @@ const puppeteer = require('puppeteer');
     await page.goto(link);
     await Promise.all([
         page.waitForNavigation(), 
-        page.click('ez-accept-all'),
+        page.click('#start'),
         new Promise(resolve => setTimeout(resolve, 17000))
     ])
-    const firstMatch = await page.$eval('ez-accept-all', (el)=>{
+    const firstMatch = await page.$eval('#start', (el)=>{
         return el.innerText;
     })
     
